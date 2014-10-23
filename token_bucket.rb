@@ -47,12 +47,12 @@ class TokenBucket
 
   private
 
-  def tokens?
-    @tokens > 0
-  end
-
   def tokens
     @tokens
+  end
+
+  def tokens?
+    @tokens > 0
   end
 end
 
