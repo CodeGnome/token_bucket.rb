@@ -60,7 +60,7 @@ if __FILE__ == $0
   require 'pp'
 
   # Set up a token bucket to represent a single appointment slot to contend for,
-  # and define an Array of Structs to act as the collaborator object.
+  # then define an Array of Struct objects to collaborate with the TokenBucket.
   tb = TokenBucket.new 1
   Person = Struct.new :name, :token
   people = [Person.new('John Doe'), Person.new('Jane Doe')]
