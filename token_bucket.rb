@@ -67,7 +67,7 @@ if __FILE__ == $0
   people[0].token = tb.get_token
   people[1].token = tb.get_token
 
-  # Who has a token, and is able to make an appointment?
+  # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
   #=> [#<struct Person name="John Doe", token=true>]
 
@@ -75,7 +75,7 @@ if __FILE__ == $0
   people[0].token = tb.put_token
   people[1].token = tb.get_token
 
-  # Who has a token, and is able to make an appointment?
+  # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
   #=> [#<struct Person name="Jane Doe", token=true>]
 end
