@@ -64,20 +64,21 @@ if __FILE__ == $0
   bucket = TokenBucket.new 1
   Person = Struct.new :name, :token
   people = [Person.new('John Doe'), Person.new('Jane Doe')]
+  pp bucket, people
 
-  # John and Jane both try to schedule an appointment.
+  puts
+  puts 'John and Jane both try to schedule an appointment.'
+  puts 'Who has a token, and is thus eligible to make an appointment?'
   people[0].token = bucket.req_token
   people[1].token = bucket.req_token
-
-  # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
   #=> [#<struct Person name="John Doe", token=true>]
 
-  # John cancels an appointment and Jane takes the token.
+  puts
+  puts 'John cancels an appointment and Jane takes the returned token.'
+  puts 'Who has a token, and is thus eligible to make an appointment?'
   people[0].token = bucket.rel_token
   people[1].token = bucket.req_token
-
-  # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
   #=> [#<struct Person name="Jane Doe", token=true>]
 end
