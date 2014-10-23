@@ -38,8 +38,8 @@ class TokenBucket
     false
   end
 
-  # Release a token and return it to the bucket. Return false as the calling
-  # object will no longer have a token.
+  # Release a token and return it to the bucket. Return false since the *caller*
+  # no longer has a token.
   def rel_token
     @tokens += 1
     false
