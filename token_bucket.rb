@@ -61,21 +61,21 @@ if __FILE__ == $0
 
   # Set up a token bucket to represent a single appointment slot to contend for,
   # then define an Array of Struct objects to collaborate with the TokenBucket.
-  tb = TokenBucket.new 1
+  bucket = TokenBucket.new 1
   Person = Struct.new :name, :token
   people = [Person.new('John Doe'), Person.new('Jane Doe')]
 
   # John and Jane both try to schedule an appointment.
-  people[0].token = tb.req_token
-  people[1].token = tb.req_token
+  people[0].token = bucket.req_token
+  people[1].token = bucket.req_token
 
   # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
   #=> [#<struct Person name="John Doe", token=true>]
 
   # John cancels an appointment and Jane takes the token.
-  people[0].token = tb.rel_token
-  people[1].token = tb.req_token
+  people[0].token = bucket.rel_token
+  people[1].token = bucket.req_token
 
   # Who has a token, and is thus eligible to make an appointment?
   pp people.select { |person| person.token }
