@@ -28,7 +28,7 @@ class TokenBucket
     @tokens = tokens
   end
 
-  # Take a token from the bucket if one is available. Returns a Boolean value
+  # Request a token from the bucket if one is available. Returns a Boolean value
   # based on whether a token was available for the caller or not.
   def req_token
     if tokens?
