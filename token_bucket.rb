@@ -45,6 +45,8 @@ class TokenBucket
     false
   end
 
+  private
+
   def tokens?
     @tokens > 0
   end
