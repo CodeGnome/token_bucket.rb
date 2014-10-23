@@ -65,19 +65,19 @@ when you run the program.
     bucket = TokenBucket.new 1
     #=> #<TokenBucket:0x007f81666f51f0 @tokens=1>
 
-    bucket.req_token
+    bucket.request_token
     #=> true
 
     bucket.inspect
     #=> #<TokenBucket:0x007f81666f51f0 @tokens=0>
 
-    bucket.req_token
+    bucket.request_token
     #=> false
 
     bucket.send :tokens
     #=> 0
 
-    bucket.rel_token
+    bucket.release_token
     #=> false
 
     bucket.inspect

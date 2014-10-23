@@ -30,7 +30,7 @@ class TokenBucket
 
   # Request a token from the bucket if one is available. Returns a Boolean value
   # based on whether a token was available for the caller or not.
-  def req_token
+  def request_token
     if tokens?
       @tokens -= 1
       return true
@@ -40,7 +40,7 @@ class TokenBucket
 
   # Release a token and return it to the bucket. Return false since the *caller*
   # no longer has a token.
-  def rel_token
+  def release_token
     @tokens += 1
     false
   end
@@ -69,16 +69,16 @@ if __FILE__ == $0
   puts
   puts 'John and Jane both try to schedule an appointment.'
   puts 'Who has a token, and is thus eligible to make an appointment?'
-  people[0].token = bucket.req_token
-  people[1].token = bucket.req_token
+  people[0].token = bucket.request_token
+  people[1].token = bucket.request_token
   pp people.select { |person| person.token }
   #=> [#<struct Person name="John Doe", token=true>]
 
   puts
   puts 'John cancels an appointment and Jane takes the returned token.'
   puts 'Who has a token, and is thus eligible to make an appointment?'
-  people[0].token = bucket.rel_token
-  people[1].token = bucket.req_token
+  people[0].token = bucket.release_token
+  people[1].token = bucket.request_token
   pp people.select { |person| person.token }
   #=> [#<struct Person name="Jane Doe", token=true>]
 end
