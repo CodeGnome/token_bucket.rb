@@ -1,4 +1,4 @@
-# Project Name: [token\_bucket.rb][Home]
+# Project Name: [Ruby Token Bucket Demo][Home]
 
 ## Copyright and Licensing
 
